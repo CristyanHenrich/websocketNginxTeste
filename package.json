@@ -1,0 +1,10 @@
+{
+  "name": "websocket-server",
+  "version": "1.0.0",
+  "description": "Servidor WebSocket de teste",
+  "main": "server.js",
+  "dependencies": {
+    "ws": "^8.4.0"
+  }
+}
+
