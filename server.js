@@ -1,16 +1,16 @@
-const WebSocket = require('ws');
-const http = require('http');
+const express = require('express');
+const { createServer } = require('node:http');
+const { join } = require('node:path');
+const { Server } = require('socket.io');
 
-const server = http.createServer();
-const wss = new WebSocket.Server({ server });
+const app = express();
+const server = createServer(app);
+const io = new Server(server);
 
-wss.on('connection', function connection(ws, req) {
-    const porta = req.url.split('/')[1];
-    console.log('Conexão WebSocket estabelecida na porta:', porta);
-
-    ws.send(`Bem-vindo! Você está conectado na porta ${porta}.`);
+io.on('connection', (socket) => {
+  console.log('a user connected');
 });
 
-server.listen(4001, function() {
-    console.log('Servidor WebSocket está ouvindo na porta 4001.');
+server.listen(4001, () => {
+  console.log('server running at http://localhost:4001');
 });
