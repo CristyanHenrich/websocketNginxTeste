@@ -7,3 +7,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4001:4001"
+    networks:
+      - npm_network
+
+networks:
+  npm_network:
+      name: npm_network
